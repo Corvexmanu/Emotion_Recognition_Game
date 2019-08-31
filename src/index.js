@@ -1,19 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Camera from './Camera';
-import Timer from './Timer';
-import Score from './Score';
+import GameFrame from './GameFrame';
 import * as serviceWorker from './serviceWorker';
 
-const app = (
-    <div>
-        <Timer limit={5} />
-        <Camera />
-    </div>
-);
 
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render(<GameFrame />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

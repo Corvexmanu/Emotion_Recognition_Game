@@ -4,12 +4,14 @@ import './Camera.css';
 class Camera extends React.Component {
   render() {
     return (
-      <video autoPlay="true" id="videoElement">
-      </video>
+      <div>
+        <video autoPlay={true} id="videoElement" width={this.props.size} height={this.props.size} style={{ 'object-fit': 'fill' }}></video>
+        <canvas id="canvas"></canvas>
+      </div >
     );
   }
   componentDidMount() {
-    var video = document.querySelector("#videoElement");
+    let video = document.querySelector("#videoElement");
 
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: true })
@@ -20,6 +22,16 @@ class Camera extends React.Component {
           console.log("Something went wrong!");
         });
     }
+  }
+
+  takePhoto() {
+    let videoSnapshot = document.getElementById("videoElement");
+    let canvas = document.getElementById("canvas");
+    canvas.width = 500;
+    canvas.height = 500;
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(videoSnapshot, 0, 0, canvas.width, canvas.height);
+    console.log(ctx.getImageData(0, 0, canvas.width, canvas.height));
   }
 }
 

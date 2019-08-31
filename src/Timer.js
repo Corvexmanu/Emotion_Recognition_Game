@@ -27,6 +27,8 @@ class Timer extends React.Component {
 
     if (this.state.currentTime === 0) {
       clearInterval(this.interval);
+      // Take photo
+      this.props.parent.triggerPhotoCapture();
     }
   }
 }
