@@ -8,7 +8,7 @@ class Timer extends React.Component {
       return (
           // do something
             <span>
-
+                
             </span>
       );
     }
