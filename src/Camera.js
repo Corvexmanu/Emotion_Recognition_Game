@@ -2,35 +2,60 @@ import React from 'react';
 import './Camera.css';
 
 class Camera extends React.Component {
+
   render() {
+
+    let parentStyle = {
+      'overflow': 'hidden',
+      'width': this.props.size + 'px',
+      'height': this.props.size + 'px'
+    }
+
+    let stylingProperties = {
+      'height': '100%',
+      'position': 'relative',
+      'left': '-25%'
+    };
+
     return (
-      <div>
-        <video autoPlay={true} id="videoElement" width={this.props.size} height={this.props.size} style={{ 'object-fit': 'fill' }}></video>
-        <canvas id="canvas"></canvas>
+
+      <div style={parentStyle}>
+        <video autoPlay={true} id="videoElement" style={stylingProperties}></video>
+        <canvas id="canvas" width={this.props.size + 'px'} height={this.props.size + 'px'}></canvas>
       </div >
     );
   }
   componentDidMount() {
-    let video = document.querySelector("#videoElement");
+    this.videoElement = document.querySelector("#videoElement");
 
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: true })
         .then(function (stream) {
-          video.srcObject = stream;
-        })
+          this.videoElement.srcObject = stream;
+        }.bind(this))
         .catch(function (err0r) {
-          console.log("Something went wrong!");
+          console.log("Something went wrong!", err0r);
         });
     }
   }
 
   takePhoto() {
-    let videoSnapshot = document.getElementById("videoElement");
     let canvas = document.getElementById("canvas");
-    canvas.width = 240;
-    canvas.height = 240;
     let ctx = canvas.getContext("2d");
-    ctx.drawImage(videoSnapshot, 0, 0, canvas.width, canvas.height);
+
+    // TODO: Fix aspect ratio
+
+    /*let w = this.videoElement.videoWidth;
+    let h = this.videoElement.videoHeight;
+
+    let mult = h / canvas.height;
+    let actualW = w / mult;
+
+    let xOffset = (actualW - canvas.width) / 2;
+    console.log(xOffset);
+    */
+    ctx.drawImage(this.videoElement, 0, 0, canvas.width, canvas.height);
+    this.videoElement.style.display = 'none';
     console.log(ctx.getImageData(0, 0, canvas.width, canvas.height));
   }
 }
