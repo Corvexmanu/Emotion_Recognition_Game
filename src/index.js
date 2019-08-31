@@ -5,8 +5,14 @@ import Camera from './Camera';
 import Timer from './Timer';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Camera />, document.getElementById('root'));
-ReactDOM.render(<Timer limit={5} />, document.getElementById('root'));
+const app = (
+    <div>
+        <Timer limit={5} />
+        <Camera />
+    </div>
+);
+
+ReactDOM.render(app, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
