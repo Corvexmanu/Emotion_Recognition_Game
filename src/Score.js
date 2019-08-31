@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 class Score extends React.Component {
     constructor(props) {
@@ -15,7 +16,14 @@ class Score extends React.Component {
       return (
             <span>
                 <h2>{this.props.name}</h2>
-                <h1>{this.state.score}</h1>
+                <h2>Score: {this.state.score}</h2>
+                <Button color="primary" onClick={() => { 
+                    this.setState({
+                        score: this.state.score = 0
+                      });
+                 }}>
+                    New Game
+                </Button>
                 <button onClick={this.increaseScore}>+2</button>
             </span>
       );
@@ -24,6 +32,5 @@ class Score extends React.Component {
         
     }
   }
-  
 
   export default Score;

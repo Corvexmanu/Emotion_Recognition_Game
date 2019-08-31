@@ -27,8 +27,8 @@ class Camera extends React.Component {
   takePhoto() {
     let videoSnapshot = document.getElementById("videoElement");
     let canvas = document.getElementById("canvas");
-    canvas.width = 500;
-    canvas.height = 500;
+    canvas.width = 240;
+    canvas.height = 240;
     let ctx = canvas.getContext("2d");
     ctx.drawImage(videoSnapshot, 0, 0, canvas.width, canvas.height);
     console.log(ctx.getImageData(0, 0, canvas.width, canvas.height));

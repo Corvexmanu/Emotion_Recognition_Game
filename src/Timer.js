@@ -9,7 +9,10 @@ class Timer extends React.Component {
   }
   render() {
     return (
-      <span>{this.state.currentTime}</span>
+        <div>
+            <text>Pose in: </text>
+            <span>{this.state.currentTime}</span>
+        </div>
     );
   }
   componentDidMount() {

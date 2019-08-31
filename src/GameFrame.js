@@ -3,6 +3,7 @@ import Camera from './Camera';
 import Timer from './Timer';
 import Score from './Score';
 import NavBar from './NavBar'
+import Grid from '@material-ui/core/Grid'
 
 class GameFrame extends React.Component {
     constructor(props) {
@@ -13,9 +14,23 @@ class GameFrame extends React.Component {
         return (
             <div>
                 <NavBar />
-                <Timer limit={5} parent={this} />
-                <Camera ref={camera => this.camera = camera} size={240} />
-                <Score />
+                {/* spacing={24} style={{padding: 24}} */}
+                {/* xs={12} sm={6} lg={4} xl={3} */}
+                <Grid container spacing={24} style={{padding: 24}}>
+                    { (
+                        <div>
+                            <Grid item>
+                                <h3>Pull Expression: </h3>
+                                <Timer limit={5} parent={this} />
+                                <Camera ref={camera => this.camera = camera} size={240} />
+                            </Grid> 
+                            <Grid item>
+                                <Score /> 
+                            </Grid> 
+                        </div>
+                    )}
+                </Grid>
+                {/* <Score />  */}
             </div>
         )
     }
