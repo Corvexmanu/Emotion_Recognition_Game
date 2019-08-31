@@ -3,6 +3,7 @@ import Camera from './Camera';
 import Timer from './Timer';
 import Score from './Score';
 import NavBar from './NavBar'
+import Expressions from './Expressions'
 import Grid from '@material-ui/core/Grid'
 
 class GameFrame extends React.Component {
@@ -20,7 +21,7 @@ class GameFrame extends React.Component {
                     { (
                         <div>
                             <Grid item>
-                                <h3>Pull Expression: </h3>
+                                <Expressions /> 
                                 <Timer limit={5} parent={this} />
                                 <Camera ref={camera => this.camera = camera} size={240} />
                             </Grid> 

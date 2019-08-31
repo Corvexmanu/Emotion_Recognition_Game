@@ -22,7 +22,7 @@ class Score extends React.Component {
                         score: this.state.score = 0
                       });
                  }}>
-                    New Game
+                    Next
                 </Button>
                 <button onClick={this.increaseScore}>+2</button>
             </span>
