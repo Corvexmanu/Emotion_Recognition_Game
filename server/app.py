@@ -29,6 +29,8 @@ def loadimage(image, verbose = False):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     cv2.imwrite("./Test.jpg", image)
     image = np.expand_dims(image, -1).astype('float64')
+    image -= np.mean(image, axis=0)
+    image /= np.std(image, axis=0)
     X = []
     X.append(image)
     X = np.array(X)
