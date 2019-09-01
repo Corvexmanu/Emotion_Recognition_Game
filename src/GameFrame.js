@@ -21,7 +21,7 @@ class GameFrame extends React.Component {
                     { (
                         <div>
                             <Grid item>
-                                <Expressions /> 
+                                <Expressions ref={Expressions => this.Expressions = Expressions}/> 
                                 <Timer limit={5} parent={this} />
                                 <Camera ref={camera => this.camera = camera} size={240} />
                             </Grid> 
@@ -38,6 +38,12 @@ class GameFrame extends React.Component {
 
     triggerPhotoCapture() {
         this.camera.takePhoto();
+    }
+    triggerVideoOn() {
+        this.camera.turnVideoOn();
+    }
+    triggerNewExpression() {
+        this.Expressions.newExpression();
     }
 }
 

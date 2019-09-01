@@ -7,13 +7,17 @@ class Expressions extends React.Component {
         var expressionID = Math.floor(Math.random() * expressions.length);
         var nextExpression = expressions[expressionID];
         this.state = {expression: nextExpression}
-        this.setExpression= this.setExpression.bind(this);
+        this.newExpression= this.newExpression.bind(this);
+
     }
-    setExpression() {
+    newExpression() {
+        var expressions = ['Angry', 'Fear', 'Disgust', 'Happy', 'Surprise'];
+        var expressionID = Math.floor(Math.random() * expressions.length);
+        var nextExpression = expressions[expressionID];
         this.setState({
-          expression: this.state.expression
-        });
-    } 
+            expression: nextExpression
+          })
+    }
     render() {
       return (
             <span>

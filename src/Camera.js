@@ -4,7 +4,6 @@ import './Camera.css';
 class Camera extends React.Component {
 
   render() {
-
     let parentStyle = {
       'overflow': 'hidden',
       'width': this.props.size + 'px',
@@ -20,8 +19,8 @@ class Camera extends React.Component {
     return (
 
       <div style={parentStyle}>
-        <video autoPlay={true} id="videoElement" style={stylingProperties}></video>
-        <canvas id="canvas" width={this.props.size + 'px'} height={this.props.size + 'px'}></canvas>
+      <video autoPlay={true} id="videoElement" style={stylingProperties}></video>
+      <canvas id="canvas" width={this.props.size + 'px'} height={this.props.size + 'px'}></canvas>
       </div >
     );
   }
@@ -39,6 +38,10 @@ class Camera extends React.Component {
     }
   }
 
+  turnVideoOn() {
+    this.videoElement.style.display = 'block';
+  }
+
   takePhoto() {
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
@@ -54,7 +57,7 @@ class Camera extends React.Component {
     let xOffset = (actualW - canvas.width) / 2;
     console.log(xOffset);
     */
-    ctx.drawImage(this.videoElement, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(this.videoElement, -60, 0, canvas.width + 80, canvas.height);
     this.videoElement.style.display = 'none';
     console.log(ctx.getImageData(0, 0, canvas.width, canvas.height));
   }
