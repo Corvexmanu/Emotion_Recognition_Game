@@ -71,8 +71,9 @@ class Camera extends React.Component {
       return res.text();
     })
       .then(res => {
-        console.log(res);
-        this.props.parent.triggerScoreUpdate(res);
+        var matches = res.substring(1, res.length - 1).split(',');
+        console.log(typeof(matches));
+        this.props.parent.triggerScoreUpdate(matches);
       });
 
       // Pass the match value fetched to score update method

@@ -41,6 +41,8 @@ class GameFrame extends React.Component {
         this.Expressions.newExpression();
     }
     triggerScoreUpdate(match) {
+        console.log(this.Expressions.state.expression);
+        console.log(match);
         this.Score.updateScore(match[this.Expressions.state.expression]);
     }
 }
