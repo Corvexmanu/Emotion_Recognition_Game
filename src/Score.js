@@ -6,10 +6,11 @@ class Score extends React.Component {
       super(props);
       this.state = {score: 0}
       this.match = 0;
-      this.round = 0;
+      this.round = 1;
       this.updateScore = this.updateScore.bind(this);
     }
     updateScore(match) {
+      console.log(match);
       this.round = this.round + 1;
       this.match = Math.floor(match*100);
       this.setState({
@@ -28,9 +29,9 @@ class Score extends React.Component {
                   Score: {this.state.score}
                 </h3>
                 <Button color="primary" onClick={() => { 
-                    this.round = 0;
+                    this.round = 1;
                     this.setState({
-                        score: this.state.score = 0
+                        score: 0
                       });
                  }}>
                     Restart

@@ -72,10 +72,11 @@ class Camera extends React.Component {
     })
       .then(res => {
         console.log(res);
+        this.props.parent.triggerScoreUpdate(res);
       });
 
       // Pass the match value fetched to score update method
-      this.props.parent.triggerScoreUpdate(0.78);
+      // this.props.parent.triggerScoreUpdate(0.78);
   }
 }
 

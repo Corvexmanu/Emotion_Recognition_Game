@@ -7,10 +7,6 @@ import Expressions from './Expressions'
 import Grid from '@material-ui/core/Grid'
 
 class GameFrame extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
@@ -35,7 +31,6 @@ class GameFrame extends React.Component {
             </div>
         )
     }
-
     triggerPhotoCapture() {
         this.camera.takePhoto();
     }
@@ -46,7 +41,7 @@ class GameFrame extends React.Component {
         this.Expressions.newExpression();
     }
     triggerScoreUpdate(match) {
-        this.Score.updateScore(match);
+        this.Score.updateScore(match[this.Expressions.state.expression]);
     }
 }
 
