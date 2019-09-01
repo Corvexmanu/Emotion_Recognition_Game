@@ -59,17 +59,17 @@ class Camera extends React.Component {
     */
     ctx.drawImage(this.videoElement, -60, 0, canvas.width + 80, canvas.height);
     this.videoElement.style.display = 'none';
-    console.log(ctx.getImageData(0, 0, canvas.width, canvas.height));
 
     let dataArray = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
 
     fetch('http://localhost:5000/predict', {
       method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: {
-        "imageData": dataArray
-      }
-    }).then(res => res.json())
+      headers: { 'Content-Type': 'text/plain' },
+      body: dataArray.toString()
+    }).then(res => {
+      console.log(res);
+      return res.text();
+    })
       .then(res => {
         console.log(res);
       });
