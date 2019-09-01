@@ -23,10 +23,10 @@ class GameFrame extends React.Component {
                             <Grid item>
                                 <Expressions ref={Expressions => this.Expressions = Expressions}/> 
                                 <Timer limit={5} parent={this} />
-                                <Camera ref={camera => this.camera = camera} size={240} />
+                                <Camera ref={camera => this.camera = camera} size={240} parent={this} />
                             </Grid> 
                             <Grid item>
-                                <Score /> 
+                                <Score ref={Score => this.Score = Score}/> 
                             </Grid> 
                         </div>
                     )}
@@ -44,6 +44,9 @@ class GameFrame extends React.Component {
     }
     triggerNewExpression() {
         this.Expressions.newExpression();
+    }
+    triggerScoreUpdate(match) {
+        this.Score.updateScore(match);
     }
 }
 

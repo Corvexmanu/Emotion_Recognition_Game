@@ -5,26 +5,36 @@ class Score extends React.Component {
     constructor(props) {
       super(props);
       this.state = {score: 0}
-      this.increaseScore = this.increaseScore.bind(this);
+      this.match = 0;
+      this.round = 0;
+      this.updateScore = this.updateScore.bind(this);
     }
-    increaseScore() {
-        this.setState({
-          score: this.state.score + 2
-        });
-    } 
+    updateScore(match) {
+      this.round = this.round + 1;
+      this.match = Math.floor(match*100);
+      this.setState({
+        score: this.state.score + Math.round(match*10)
+      });
+    }
     render() {
       return (
             <span>
                 <h2>{this.props.name}</h2>
-                <h2>Score: {this.state.score}</h2>
+                <h3>
+                  Round: {this.round}
+                  <br></br>
+                  Match: {this.match}%
+                  <br></br>
+                  Score: {this.state.score}
+                </h3>
                 <Button color="primary" onClick={() => { 
+                    this.round = 0;
                     this.setState({
                         score: this.state.score = 0
                       });
                  }}>
-                    Next
+                    Restart
                 </Button>
-                <button onClick={this.increaseScore}>+2</button>
             </span>
       );
     }
@@ -32,5 +42,4 @@ class Score extends React.Component {
         
     }
   }
-
   export default Score;
