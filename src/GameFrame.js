@@ -11,9 +11,7 @@ class GameFrame extends React.Component {
         return (
             <div>
                 <NavBar />
-                {/* spacing={24} style={{padding: 24}} */}
-                {/* xs={12} sm={6} lg={4} xl={3} */}
-                <Grid container spacing={24} style={{padding: 24}}>
+                <Grid container spacing={12} justify="center" style={{padding: 12}}>
                     { (
                         <div>
                             <Grid item>
@@ -27,7 +25,6 @@ class GameFrame extends React.Component {
                         </div>
                     )}
                 </Grid>
-                {/* <Score />  */}
             </div>
         )
     }
@@ -41,10 +38,9 @@ class GameFrame extends React.Component {
         this.Expressions.newExpression();
     }
     triggerScoreUpdate(match) {
-        console.log(this.Expressions.state.expression);
-        console.log(match);
-        this.Score.updateScore(match[this.Expressions.state.expression]);
+        console.log((Math.max(...match)))
+        console.log(match.indexOf(Math.max(...match).toString()))
+        this.Score.updateScore(match[this.Expressions.state.expression], match.indexOf(Math.max(...match).toString()));
     }
 }
-
 export default GameFrame;
