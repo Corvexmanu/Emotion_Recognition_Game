@@ -71,12 +71,13 @@ def get_prediction():
     # Works only for a single sample
     if request.method == 'POST':
         data = request.get_data()  # Get data posted   
-        image = data.decode("utf-8")             
+        image = data.decode("utf-8")            
         x = loadimage(image)
+        print("==================================")
         prediction = makePrediction(model,x)  # runs globally loaded model on the data
     return str(prediction)
 
 
 if __name__ == '__main__':
     loadModel()  # load model at the beginning once only
-    app.run(host='localhost', port=5000)
+    app.run(host='localhost', port=5000 , debug = True)
